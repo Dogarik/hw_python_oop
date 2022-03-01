@@ -80,8 +80,9 @@ class Running(Training):
         calorie_1: int = 18
         calorie_2: int = 20
 
-        spent_calories = ((calorie_1 * self.get_mean_speed() - calorie_2) * self.weight / self.M_IN_KM
-                          * self.duration * self.MIN_HOUR)
+        spent_calories = ((calorie_1 * self.get_mean_speed() - calorie_2)
+                          * self.weight / self.M_IN_KM * self.duration
+                          * self.MIN_HOUR)
         return spent_calories
 
 
@@ -102,8 +103,9 @@ class SportsWalking(Training):
         calorie_4: int = 2
         calorie_5: float = 0.029
 
-        spent_calories = ((calorie_3 * self.weight + (self.get_mean_speed() ** calorie_4 // self.height)
-                           * calorie_5 * self.weight) * self.duration * self.MIN_HOUR)
+        spent_calories = ((calorie_3 * self.weight + (self.get_mean_speed()
+                           ** calorie_4 // self.height) * calorie_5
+                           * self.weight) * self.duration * self.MIN_HOUR)
         return spent_calories
 
 
@@ -127,14 +129,16 @@ class Swimming(Training):
         return super().get_distance()
 
     def get_mean_speed(self) -> float:
-        mean_speed = self.length_pool * self.count_pool / self.M_IN_KM / self.duration
+        mean_speed = (self.length_pool * self.count_pool / self.M_IN_KM
+                      / self.duration)
         return mean_speed
 
     def get_spent_calories(self) -> float:
         calorie_6: float = 1.1
         calorie_7: int = 2
 
-        spent_calories = (self.get_mean_speed() + calorie_6) * calorie_7 * self.weight
+        spent_calories = ((self.get_mean_speed() + calorie_6) * calorie_7\
+                          * self.weight)
         return spent_calories
 
 
