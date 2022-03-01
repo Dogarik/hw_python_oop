@@ -97,7 +97,7 @@ class SportsWalking(Training):
         calorie_5: float = 0.029
 
         spent_calories = ((calorie_3 * self.weight + (self.get_mean_speed()
-                                                      ** calorie_4 // self.height) * calorie_5
+                           ** calorie_4 // self.height) * calorie_5
                            * self.weight) * self.duration * self.MIN_HOUR)
         return spent_calories
 
