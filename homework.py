@@ -69,13 +69,6 @@ class Training:
 class Running(Training):
     """Тренировка: бег."""
 
-    def __init__(self,
-                 action: int,
-                 duration: float,
-                 weight: float
-                 ):
-        super().__init__(action, duration, weight)
-
     def get_spent_calories(self) -> float:
         calorie_1: int = 18
         calorie_2: int = 20
@@ -104,7 +97,7 @@ class SportsWalking(Training):
         calorie_5: float = 0.029
 
         spent_calories = ((calorie_3 * self.weight + (self.get_mean_speed()
-                           ** calorie_4 // self.height) * calorie_5
+                                                      ** calorie_4 // self.height) * calorie_5
                            * self.weight) * self.duration * self.MIN_HOUR)
         return spent_calories
 
@@ -150,8 +143,11 @@ def read_package(workout_type: str, data: list) -> Training:
         'RUN': Running,
         'WLK': SportsWalking
     }
-    train = dict[workout_type]
-    return train(*data)
+
+    if workout_type not in dict:
+        raise ValueError
+    else:
+        return dict[workout_type](*data)
 
 
 def main(training: Training) -> None:
