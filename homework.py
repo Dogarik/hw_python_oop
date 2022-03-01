@@ -7,7 +7,7 @@ class InfoMessage:
                  distance: float,
                  speed: float,
                  calories: float
-                 ) -> None:
+                 ):
         self.training_type = training_type
         self.duration = duration
         self.distance = distance
@@ -18,10 +18,10 @@ class InfoMessage:
         """Сообщение о тренировке"""
 
         return (f'Тип тренировки: {self.training_type}; '
-                f'Длительность: {self.duration} ч.; '
-                f'Дистанция: {self.distance} км; '
-                f'Ср. скорость: {self.speed} км/ч; '
-                f'Потрачено ккал: {self.calories}.')
+                f'Длительность: {self.duration:.3f} ч.; '
+                f'Дистанция: {self.distance:.3f} км; '
+                f'Ср. скорость: {self.speed:.3f} км/ч; '
+                f'Потрачено ккал: {self.calories:.3f}.')
 
 
 class Training:
@@ -123,11 +123,10 @@ class Swimming(Training):
         self.length_pool = length_pool
         self.count_pool = count_pool
 
-    def get_distance(self) -> None:
-        super().get_distance()
+    def get_distance(self) -> float:
+        return super().get_distance()
 
     def get_mean_speed(self) -> float:
-
         mean_speed = self.length_pool * self.count_pool / self.M_IN_KM / (self.duration * self.MIN_HOUR)
         return mean_speed
 
