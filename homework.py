@@ -137,7 +137,7 @@ class Swimming(Training):
         calorie_6: float = 1.1
         calorie_7: int = 2
 
-        spent_calories = ((self.get_mean_speed() + calorie_6) * calorie_7\
+        spent_calories = ((self.get_mean_speed() + calorie_6) * calorie_7
                           * self.weight)
         return spent_calories
 
